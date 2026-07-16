@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: trader-workbook
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/trader}
+    username: ${SPRING_DATASOURCE_USERNAME:trader}
+    password: ${SPRING_DATASOURCE_PASSWORD:trader}
+  jpa:
+    hibernate:
+      ddl-auto: update
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+
+server:
+  port: ${SERVER_PORT:8000}
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:change-me-in-production-use-at-least-256-bits-secret-key}
+    access-ttl: ${JWT_ACCESS_TTL:30m}
+    refresh-ttl: ${JWT_REFRESH_TTL:7d}
+  admin:
+    username: ${ADMIN_USERNAME:admin}
+    password: ${ADMIN_PASSWORD:admin}
+
+springdoc:
+  swagger-ui:
+    path: /docs
+  api-docs:
+    path: /v3/api-docs
+
+logging:
+  level:
+    com.omfgdevelop.trader_workbook: INFO
